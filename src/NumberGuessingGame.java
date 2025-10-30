@@ -18,27 +18,29 @@ public class NumberGuessingGame {
         max = input.nextInt();
 
         int random = rand.nextInt(min, max + 1);
+        if (min > max) {
+            System.out.println(" Invalid range... minimum must be lesser than maximum");
+        }
+        else {
+            System.out.println("-----Number Guessing Game 👾 -----");
+            System.out.printf(" Guess a number between %d-%d\n", min, max);
 
-        System.out.println("-----Number Guessing Game 👾 -----");
-        System.out.printf(" Guess a number between %d-%d\n", min, max);
+            do {
+                System.out.print(" Enter a guess: ");
+                guess = input.nextInt();
+                attempt++;
 
-        do {
-            System.out.print(" Enter a guess: ");
-            guess = input.nextInt();
-            attempt++;
+                if (guess > random) {
+                    System.out.println(" Your guess is higher 👆 than the actual number.");
+                } else if (guess < random) {
+                    System.out.println(" Your guess is lower 👇 than the actual number.");
+                } else {
+                    System.out.println(" Your guess is CORRECT.🏆. The actual number was " + random);
+                    System.out.println(" Number of attempts: " + attempt);
+                }
 
-            if (guess > random) {
-                System.out.println(" Your guess is higher 👆 than the actual number.");
-            }
-            else if (guess < random) {
-                System.out.println(" Your guess is lower 👇 than the actual number.");
-            }
-            else {
-                System.out.println(" Your guess is CORRECT.🏆. The actual number was " + random);
-                System.out.println(" Number of attempts: " + attempt);
-            }
-
-        } while (guess != random);
+            } while (guess != random);
+        }
 
 
 
